@@ -1,0 +1,86 @@
+{
+  "n_records": 17128,
+  "language_distribution (record language field)": {
+    "en": 16421,
+    "ar": 707
+  },
+  "title_languages": {
+    "ar+en": 16285,
+    "en": 601,
+    "ar": 242
+  },
+  "has_arabic_title_pct": 96.5,
+  "has_english_title_pct": 98.6,
+  "collections": {
+    "berj": 2283,
+    "magrj": 1601,
+    "edusj": 1537,
+    "rsci": 1537,
+    "jeh": 1160,
+    "rengj": 1130,
+    "tanmiyat": 1034,
+    "rden": 971,
+    "rsprs": 919,
+    "alaw": 783,
+    "regs": 701,
+    "csmj": 671,
+    "earth": 660,
+    "stats": 520,
+    "mmed": 468,
+    "mjn": 414,
+    "athar": 270,
+    "jcis": 233,
+    "fnon": 149,
+    "rjps": 59,
+    "jamh": 28
+  },
+  "record_types": {
+    "article": 17128
+  },
+  "bilingual_ar_en_pct": 95.2,
+  "field_completeness_pct": {
+    "title": 100.0,
+    "authors": 100.0,
+    "subjects": 76.7,
+    "abstract": 8.9
+  },
+  "field_combinations": {
+    "T+Au+S": 11812,
+    "T+Au": 3791,
+    "T+Au+S+Ab": 1330,
+    "T+Au+Ab": 195
+  },
+  "title_words": {
+    "n_nonzero": 17128,
+    "mean": 14.7,
+    "median": 14.0,
+    "p90": 23.0
+  },
+  "abstract_words": {
+    "n_nonzero": 1525,
+    "mean": 278.4,
+    "median": 259.0,
+    "p90": 489.0
+  },
+  "subjects_per_record": {
+    "n_nonzero": 13142,
+    "mean": 3.8,
+    "median": 4.0,
+    "p90": 6.0
+  },
+  "authors_per_record": {
+    "n_nonzero": 17128,
+    "mean": 3.1,
+    "median": 2.0,
+    "p90": 6.0
+  },
+  "year_min": 2001,
+  "year_max": 2026,
+  "year_missing_pct": 0.0,
+  "pipeline": {
+    "loaded": 17226,
+    "dropped_empty_or_placeholder": 9,
+    "duplicates_removed": 89,
+    "final": 17128
+  }
+}

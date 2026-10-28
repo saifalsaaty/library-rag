@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST FIXTURE ONLY -->
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/">
+  <responseDate>2026-10-14T00:00:00Z</responseDate>
+  <request verb="ListRecords">https://example.org/oai</request>
+  <ListRecords>
+    <record>
+      <header>
+        <identifier>oai:example.org:article/3</identifier>
+        <datestamp>2023-03-01T00:00:00Z</datestamp>
+        <setSpec>other:ResearchArticle</setSpec>
+      </header>
+      <metadata>
+        <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <dc:title>عنوان عربي فقط بلا وسم لغة</dc:title>
+          <dc:creator>باحث، ثالث</dc:creator>
+          <dc:date>2023</dc:date>
+        </oai_dc:dc>
+      </metadata>
+    </record>
+    <resumptionToken completeListSize="3" cursor="2"/>
+  </ListRecords>
+</OAI-PMH>

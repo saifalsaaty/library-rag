@@ -1,0 +1,11 @@
+base_url=https://rengj.uomosul.edu.iq/index.php/rengj/oai
+set=None
+metadataPrefix=oai_dc
+from=None
+until=None
+mode=ListRecords
+pages=12
+records_seen=1161
+records_harvested=1132
+records_the_server_could_not_deliver=0
+harvested_utc=2026-10-15T14:56:06Z

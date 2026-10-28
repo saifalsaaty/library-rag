@@ -1,0 +1,10 @@
+﻿model,condition,items_not_in_catalogue,fabricated (exists nowhere),real_but_not_held,unknown,fabricated_share,ci
+llama3.2:1b-instruct-q4_K_M,norag_grounded,1,1,0,0,1.0,"[0.207, 1.000]"
+llama3.2:1b-instruct-q4_K_M,norag_plain,21,19,1,1,0.905,"[0.711, 0.973]"
+llama3.2:1b-instruct-q4_K_M,rag_plain,4,2,1,1,0.5,"[0.150, 0.850]"
+llama3.2:3b-instruct-q4_K_M,norag_plain,29,22,2,5,0.759,"[0.579, 0.878]"
+llama3.2:3b-instruct-q4_K_M,rag_plain,14,8,2,4,0.571,"[0.326, 0.786]"
+qwen2.5:3b-instruct-q4_K_M,norag_plain,11,7,1,3,0.636,"[0.354, 0.848]"
+qwen2.5:3b-instruct-q4_K_M,rag_plain,1,1,0,0,1.0,"[0.207, 1.000]"
+qwen2.5:7b-instruct-q4_K_M,norag_plain,23,14,5,4,0.609,"[0.408, 0.778]"
+qwen2.5:7b-instruct-q4_K_M,rag_plain,1,1,0,0,1.0,"[0.207, 1.000]"

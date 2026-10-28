@@ -1,0 +1,11 @@
+base_url=https://jcis.uomosul.edu.iq/index.php/jcis/oai
+set=None
+metadataPrefix=oai_dc
+from=None
+until=None
+mode=ListRecords
+pages=3
+records_seen=264
+records_harvested=235
+records_the_server_could_not_deliver=0
+harvested_utc=2026-10-15T14:56:19Z

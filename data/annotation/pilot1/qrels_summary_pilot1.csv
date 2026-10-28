@@ -1,0 +1,11 @@
+﻿qid,lang,type,answerable_label,judged,relevant,highly_relevant,label_conflict
+Q001,ar,topical,True,29,18,4,False
+Q002,ar,exploratory,True,32,10,1,False
+Q003,ar,known_item,True,33,3,1,False
+Q004,ar,topical,True,35,4,0,False
+Q005,ar,topical,False,40,10,3,True
+Q006,en,topical,True,27,17,7,False
+Q007,en,exploratory,True,26,10,2,False
+Q008,en,known_item,True,30,2,0,False
+Q009,en,topical,True,31,11,1,False
+Q010,en,exploratory,False,24,14,2,True
