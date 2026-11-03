@@ -1,7 +1,0 @@
-﻿qid,lang,type,answerable_label,judged,relevant,highly_relevant,label_conflict
-P2Q01,ar,topical,True,42,1,0,False
-P2Q02,ar,exploratory,True,34,9,8,False
-P2Q03,ar,known_item,True,41,1,1,False
-P2Q04,en,topical,True,35,9,1,False
-P2Q05,en,exploratory,True,34,8,2,False
-P2Q06,en,known_item,True,34,1,1,False
