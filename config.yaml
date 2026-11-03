@@ -20,7 +20,7 @@ paths:
 # ---------------------------------------------------------------------
 dataset:
   sources:
-    # All 26 University of Mosul journals on the university OJS platform
+    # All 26 University of XXXX-4 journals on the university OJS platform
     # (bilingual Arabic/English Dublin Core; https://ojs.uomosul.edu.iq)
     - type: oai
       name: uomosul_ojs

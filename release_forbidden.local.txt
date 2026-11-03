@@ -1,0 +1,8 @@
+# Private term list for scripts/12_make_release.py.
+# Keep this file in the project's root folder (next to config.yaml). It is never copied to the release: do not publish it.
+# One regular expression per line; blank lines and lines starting with '#' are ignored.
+\bSaif\b
+\bArwa\b
+prose in your own words
+How to use this draft
+\u0628\u0623\u0633\u0644\u0648\u0628\u0643
