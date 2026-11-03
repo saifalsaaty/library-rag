@@ -1,0 +1,11 @@
+base_url=https://rsprs.uomosul.edu.iq/index.php/rsprs/oai
+set=None
+metadataPrefix=oai_dc
+from=None
+until=None
+mode=ListRecords
+pages=10
+records_seen=951
+records_harvested=922
+records_the_server_could_not_deliver=0
+harvested_utc=2026-10-15T16:45:32Z

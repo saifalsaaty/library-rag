@@ -1,0 +1,11 @@
+base_url=https://mjn.uomosul.edu.iq/index.php/mjn/oai
+set=None
+metadataPrefix=oai_dc
+from=None
+until=None
+mode=ListRecords
+pages=5
+records_seen=445
+records_harvested=416
+records_the_server_could_not_deliver=0
+harvested_utc=2026-10-15T15:40:14Z

@@ -1,0 +1,11 @@
+base_url=https://jamh.uomosul.edu.iq/index.php/jamh/oai
+set=None
+metadataPrefix=oai_dc
+from=None
+until=None
+mode=ListRecords
+pages=1
+records_seen=58
+records_harvested=29
+records_the_server_could_not_deliver=0
+harvested_utc=2026-10-15T14:56:10Z
