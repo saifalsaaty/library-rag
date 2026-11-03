@@ -1,0 +1,17 @@
+﻿model,contrast,a,b,n,rate_a,rate_b,only_first,only_second,p_value,p_holm
+llama3.2:1b-instruct-q4_K_M,prompt effect with retrieval,rag_grounded,rag_plain,72,0.0139,0.2639,0,18,7.62939453125e-06,0.0001
+llama3.2:1b-instruct-q4_K_M,prompt effect without retrieval,norag_grounded,norag_plain,72,0.0972,0.9583,1,63,7.047314121155779e-18,0.0
+llama3.2:1b-instruct-q4_K_M,"retrieval effect, plain prompt",rag_plain,norag_plain,72,0.2639,0.9583,1,51,2.353672812205332e-14,0.0
+llama3.2:1b-instruct-q4_K_M,"retrieval effect, grounded prompt",rag_grounded,norag_grounded,72,0.0139,0.0972,1,7,0.0703125,0.2812
+llama3.2:3b-instruct-q4_K_M,prompt effect with retrieval,rag_grounded,rag_plain,72,0.0,0.7361,0,53,2.220446049250313e-16,0.0
+llama3.2:3b-instruct-q4_K_M,prompt effect without retrieval,norag_grounded,norag_plain,72,0.0,1.0,0,72,4.235164736271502e-22,0.0
+llama3.2:3b-instruct-q4_K_M,"retrieval effect, plain prompt",rag_plain,norag_plain,72,0.7361,1.0,0,19,3.814697265625e-06,0.0
+llama3.2:3b-instruct-q4_K_M,"retrieval effect, grounded prompt",rag_grounded,norag_grounded,72,0.0,0.0,0,0,1.0,1.0
+qwen2.5:3b-instruct-q4_K_M,prompt effect with retrieval,rag_grounded,rag_plain,72,0.0,0.0972,0,7,0.015625,0.0938
+qwen2.5:3b-instruct-q4_K_M,prompt effect without retrieval,norag_grounded,norag_plain,72,0.0,0.9444,0,68,6.776263578034403e-21,0.0
+qwen2.5:3b-instruct-q4_K_M,"retrieval effect, plain prompt",rag_plain,norag_plain,72,0.0972,0.9444,1,62,1.3877787807814457e-17,0.0
+qwen2.5:3b-instruct-q4_K_M,"retrieval effect, grounded prompt",rag_grounded,norag_grounded,72,0.0,0.0,0,0,1.0,1.0
+qwen2.5:7b-instruct-q4_K_M,prompt effect with retrieval,rag_grounded,rag_plain,72,0.0,0.0833,0,6,0.03125,0.1562
+qwen2.5:7b-instruct-q4_K_M,prompt effect without retrieval,norag_grounded,norag_plain,72,0.0,0.9722,0,70,1.6940658945086007e-21,0.0
+qwen2.5:7b-instruct-q4_K_M,"retrieval effect, plain prompt",rag_plain,norag_plain,72,0.0833,0.9722,0,64,1.0842021724855044e-19,0.0
+qwen2.5:7b-instruct-q4_K_M,"retrieval effect, grounded prompt",rag_grounded,norag_grounded,72,0.0,0.0,0,0,1.0,1.0
