@@ -1,8 +1,0 @@
-﻿system,n,median_ms,p95_ms
-bm25,80,0.6,0.98
-dense:minilm_en,80,7.41,8.82
-dense:mminilm,80,12.54,13.44
-dense:me5_base,80,10.7,16.07
-dense:bge_m3,80,17.91,23.63
-hybrid:bm25+me5_base,80,11.78,12.83
-hybrid:bm25+bge_m3,80,19.49,24.31

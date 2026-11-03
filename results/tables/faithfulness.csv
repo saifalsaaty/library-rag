@@ -1,8 +1,0 @@
-﻿model,condition,n_items,faithful_%,partial_%,unfaithful_%,unfaithful_ci
-llama3.2:1b-instruct-q4_K_M,rag_plain,6,66.7,33.3,0.0,"[0.000, 0.390]"
-llama3.2:3b-instruct-q4_K_M,rag_grounded,8,12.5,75.0,12.5,"[0.022, 0.471]"
-llama3.2:3b-instruct-q4_K_M,rag_plain,8,75.0,12.5,12.5,"[0.022, 0.471]"
-qwen2.5:3b-instruct-q4_K_M,rag_grounded,3,100.0,0.0,0.0,"[0.000, 0.561]"
-qwen2.5:3b-instruct-q4_K_M,rag_plain,7,42.9,57.1,0.0,"[0.000, 0.354]"
-qwen2.5:7b-instruct-q4_K_M,rag_grounded,2,100.0,0.0,0.0,"[0.000, 0.658]"
-qwen2.5:7b-instruct-q4_K_M,rag_plain,11,45.5,36.4,18.2,"[0.051, 0.477]"

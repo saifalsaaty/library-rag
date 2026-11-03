@@ -1,9 +1,0 @@
-﻿model,condition,ungrounded_before,ungrounded_after,ungrounded_after_ci,false_abstention_before,false_abstention_after,false_abstention_after_ci,mean_items_kept
-llama3.2:1b-instruct-q4_K_M,rag_plain,0.2778,0.0,"[0.000, 0.051]",0.0,0.3056,"[0.211, 0.420]",1.32
-llama3.2:1b-instruct-q4_K_M,rag_grounded,0.0139,0.0,"[0.000, 0.051]",0.6389,0.6667,"[0.552, 0.765]",0.6
-llama3.2:3b-instruct-q4_K_M,rag_plain,0.7361,0.0,"[0.000, 0.051]",0.0,0.125,"[0.067, 0.221]",2.17
-llama3.2:3b-instruct-q4_K_M,rag_grounded,0.0,0.0,"[0.000, 0.051]",0.0278,0.0556,"[0.022, 0.134]",1.86
-qwen2.5:3b-instruct-q4_K_M,rag_plain,0.0972,0.0,"[0.000, 0.051]",0.0,0.0417,"[0.014, 0.115]",2.4
-qwen2.5:3b-instruct-q4_K_M,rag_grounded,0.0,0.0,"[0.000, 0.051]",0.2639,0.2639,"[0.176, 0.376]",1.14
-qwen2.5:7b-instruct-q4_K_M,rag_plain,0.0833,0.0,"[0.000, 0.051]",0.0,0.0556,"[0.022, 0.134]",1.97
-qwen2.5:7b-instruct-q4_K_M,rag_grounded,0.0,0.0,"[0.000, 0.051]",0.2639,0.2639,"[0.176, 0.376]",0.93

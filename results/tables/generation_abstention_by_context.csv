@@ -1,9 +1,0 @@
-﻿model,condition,n_relevant_in_context,abstention_rate_relevant_in_context,ci_1,n_no_relevant_in_context,abstention_rate_no_relevant_in_context,ci_0
-llama3.2:1b-instruct-q4_K_M,rag_plain,63,0.0,"[0.000, 0.057]",17,0.0,"[0.000, 0.184]"
-llama3.2:1b-instruct-q4_K_M,rag_grounded,63,0.619,"[0.496, 0.729]",17,0.7647,"[0.527, 0.904]"
-llama3.2:3b-instruct-q4_K_M,rag_plain,63,0.0,"[0.000, 0.057]",17,0.0,"[0.000, 0.184]"
-llama3.2:3b-instruct-q4_K_M,rag_grounded,63,0.0159,"[0.003, 0.085]",17,0.0588,"[0.010, 0.270]"
-qwen2.5:3b-instruct-q4_K_M,rag_plain,63,0.0,"[0.000, 0.057]",17,0.0,"[0.000, 0.184]"
-qwen2.5:3b-instruct-q4_K_M,rag_grounded,63,0.2381,"[0.150, 0.356]",17,0.7059,"[0.469, 0.867]"
-qwen2.5:7b-instruct-q4_K_M,rag_plain,63,0.0,"[0.000, 0.057]",17,0.0,"[0.000, 0.184]"
-qwen2.5:7b-instruct-q4_K_M,rag_grounded,63,0.1905,"[0.112, 0.304]",17,0.8824,"[0.657, 0.967]"
