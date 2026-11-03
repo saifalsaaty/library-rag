@@ -1,0 +1,148 @@
+# =====================================================================
+#  librag — experiment configuration (single source of truth)
+#  Every script reads this file. Change values here, never in code.
+# =====================================================================
+
+project:
+  seed: 42
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  index_dir: data/indexes
+  queries_file: data/queries/queries.xlsx        # written by librarians (see docs/annotation_guidelines.md)
+  annotation_dir: data/annotation
+  qrels_file: data/qrels/qrels.txt
+  results_dir: results
+
+# ---------------------------------------------------------------------
+# 1. Data sources (real bibliographic records only)
+# ---------------------------------------------------------------------
+dataset:
+  sources:
+    # All 26 University of XXXX-4 journals on the university OJS platform
+    # (bilingual Arabic/English Dublin Core; https://ojs.uomosul.edu.iq)
+    - type: oai
+      name: uomosul_ojs
+      url_template: "https://{code}.uomosul.edu.iq/index.php/{code}/oai"
+      journals: [rengj, radab, jamh, jcis, jpm, jre, rjps, jwups, alaw, stats, tanmiyat, athar, regs,
+                 edusj, rsci, magrj, mjn, mmed, jeh, earth, fnon, moss, berj, csmj, rsprs, rden]
+      metadata_prefix: oai_dc
+      from_date: null          # e.g. "2015-01-01"
+      until_date: null
+      sleep_seconds: 1.0       # be polite to the server
+
+    # Central library catalogue export from Koha (enable when available)
+    # - type: marc
+    #   name: central_library
+    #   path: data/raw/central_library.mrc   # .mrc (ISO 2709) or .xml (MARCXML)
+
+    # Any CSV with bibliographic columns
+    # - type: csv
+    #   name: my_csv
+    #   path: data/raw/catalog.csv
+    #   columns: {id: ID, title: Title, authors: Author, subjects: Subjects, abstract: Abstract, language: Language, year: Year}
+    #   list_separator: ";"
+
+  min_title_chars: 5
+  placeholder_values: ["unknown", "n/a", "na", "none", "null", "-", "--", "غير معروف", "لا يوجد"]
+  # Optional size cap after cleaning (null = keep all). Sampling is seeded and stratified by collection.
+  max_records: null
+
+# ---------------------------------------------------------------------
+# 2. How a record becomes indexable text (field ablation)
+# ---------------------------------------------------------------------
+templates:
+  T:    [title]
+  TS:   [title, subjects]
+  TA:   [title, abstract]
+  TSA:  [title, subjects, abstract]
+  full: [title, authors, subjects, abstract]       # the configuration of the original prototype
+main_template: full
+template_languages: all          # all = include parallel Arabic+English metadata; primary = record language only
+ablation_templates: [T, TS, TA, TSA, full]
+ablation_models: [bm25, bge_m3]  # field ablation is run for these systems only (saves GPU time)
+language_ablation: [en, ar]      # also index main_template with English-only and Arabic-only metadata
+
+# ---------------------------------------------------------------------
+# 3. Retrieval
+# ---------------------------------------------------------------------
+retrieval:
+  depth: 100                      # length of every run list
+  bm25: {k1: 0.9, b: 0.4, stem: true, remove_stopwords: true}
+  device: auto                    # auto | cuda | cpu
+  batch_size: 32                  # safe for an 8 GB RTX 4060; halves automatically on out-of-memory
+  max_seq_length_cap: 512         # upper bound applied to every encoder (truncation is measured and reported)
+  dense_models:
+    - name: minilm_en             # baseline used by the original prototype (English-only)
+      model_id: sentence-transformers/all-MiniLM-L6-v2
+      query_prefix: ""
+      doc_prefix: ""
+    - name: mminilm
+      model_id: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+      query_prefix: ""
+      doc_prefix: ""
+    - name: me5_base
+      model_id: intfloat/multilingual-e5-base
+      query_prefix: "query: "
+      doc_prefix: "passage: "
+    - name: bge_m3
+      model_id: BAAI/bge-m3
+      query_prefix: ""
+      doc_prefix: ""
+  hybrid:
+    rrf_k: 60
+    fuse_depth: 100
+    pairs:                        # each pair becomes a system "hybrid:<a>+<b>"
+      - [bm25, me5_base]
+      - [bm25, bge_m3]
+
+# ---------------------------------------------------------------------
+# 4. Generation (local LLMs through Ollama)
+# ---------------------------------------------------------------------
+generation:
+  ollama_url: http://localhost:11434
+  # same quantisation (Q4_K_M) for every model so that model size is not confounded with precision
+  models: ["llama3.2:1b-instruct-q4_K_M", "llama3.2:3b-instruct-q4_K_M", "qwen2.5:3b-instruct-q4_K_M", "qwen2.5:7b-instruct-q4_K_M"]
+  options: {temperature: 0, seed: 42, top_p: 1.0, num_ctx: 4096, num_predict: 400}
+  keep_alive: 10m
+  timeout_seconds: 300
+  rag_retriever: "hybrid:bm25+bge_m3"   # fixed a priori; justify with the retrieval results
+  k: 3
+  max_abstract_chars: 600
+  conditions: [norag_plain, norag_grounded, rag_plain, rag_grounded]
+  k_ablation: [1, 3, 5, 10]
+  k_ablation_models: ["llama3.2:1b-instruct-q4_K_M", "qwen2.5:7b-instruct-q4_K_M"]
+  verification:
+    title_threshold: 0.85         # similarity needed to accept a title as a catalogue match
+    sensitivity_thresholds: [0.80, 0.85, 0.90]
+    candidate_pool: 30            # catalogue candidates checked per extracted title
+
+# ---------------------------------------------------------------------
+# 5. Evaluation & statistics
+# ---------------------------------------------------------------------
+evaluation:
+  cutoffs: [1, 3, 5, 10]
+  main_metric: ndcg@10
+  pool_depth: 10
+  pool_systems: ["bm25", "dense:minilm_en", "dense:bge_m3", "dense:me5_base", "hybrid:bm25+bge_m3"]
+  judge_known_items: false        # known-item queries: the target is the only relevant record (R5-R6); no pool to judge
+  pool_exclude:                   # systems that do not contribute to the pools of queries in that language
+    ar: ["dense:minilm_en"]       # English-only encoder: in the pilots 6 of 79 records it alone returned for Arabic queries were relevant
+  copy_check_accepted: [Q009, Q014, Q021, Q073]   # step-4 copied-phrase flags reviewed and kept: the shared phrase is a
+                                  # journal name (Q014, Q021), a standard term (Q009) or a conversational formula (Q073)
+  annotators: [A1, A2]            # one workbook per annotator
+  double_judged_fraction: 1.0     # share of queries judged by every annotator; the rest by the first one only
+                                  # (1.0 = full double judging; e.g. 0.3 = stratified 30% overlap for agreement)
+  relevance_scale: [0, 1, 2]      # 0 = not relevant, 1 = partially, 2 = highly relevant
+  baselines: ["bm25", "dense:minilm_en"]
+  extra_comparisons:               # tested in the same Holm family as the baseline comparisons
+    - ["hybrid:bm25+bge_m3", "dense:bge_m3"]      # does fusion with BM25 add anything to BGE-M3?
+    - ["hybrid:bm25+me5_base", "dense:me5_base"]
+    - ["dense:bge_m3", "dense:me5_base"]
+  n_permutations: 10000
+  n_bootstrap: 10000
+  alpha: 0.05
+  human_eval:                      # manual check of the automatic citation labels (step 8 → step 9)
+    items_per_label: {not_in_catalog: 60, grounded: 40, misattributed: 30, catalog_not_in_context: 20}
+    second_annotator_items: 50     # random subset judged by the second annotator for agreement
