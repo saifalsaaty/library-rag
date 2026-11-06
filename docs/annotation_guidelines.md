@@ -4,7 +4,7 @@ These guidelines are part of the study protocol. Keep them unchanged during anno
 
 ---
 
-## 1. Writing the test queries / كتابة استعلامات الاختبار
+## 1. Writing the test queries 
 
 **Who.** The two librarians of the University of XXXX-4 Central Library who also judge relevance (A1 and A2), plus real queries from the library's search logs if the library can provide them (anonymised: query text only, no user identifiers, dates or IP addresses).
 
